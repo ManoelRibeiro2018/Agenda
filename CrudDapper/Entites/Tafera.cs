@@ -8,8 +8,8 @@ namespace CrudDapper.Entites
     public class Tafera
     {
         public int Id { get; set; }
-        public string titulo { get; set; }
+        public string Titulo { get; set; }
         public string Descricao { get; set; }
-        public DateTime DatePrazo { get; set; }
+        public DateTime DataPrazo { get; set; }
     }
 }
