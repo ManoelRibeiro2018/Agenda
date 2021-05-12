@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yOkSm6Fx0XMWwsAWJdE4csBeS51TZDxhG36JkadsPuBqjxPA2VzvVQkGI+AOuy8kmcWYqGqOwVtL+SdgMJNArg==",
+  "dgSpecHash": "MEsxnz34FTd2eJVTiKaS1PPsEySJ7Qgx7vuo2hiAvPajvs5lrChHN/c7tD3gWw0iwPztfUfK3jLT0vk1Mmj9og==",
   "success": true,
   "projectFilePath": "C:\\Users\\manoel.ribeiro.neto\\source\\repos\\CrudDapper\\CrudDapper\\CrudDapper.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
