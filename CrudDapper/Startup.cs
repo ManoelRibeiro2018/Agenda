@@ -30,7 +30,7 @@ namespace CrudDapper
         {
 
             services.AddControllers();
-            services.AddDbContext<TaferaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
+            services.AddDbContext<TarefaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CrudDapper", Version = "v1" });

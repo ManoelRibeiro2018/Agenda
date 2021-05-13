@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace CrudDapper.Persistence
 {
-    public class TaferaContext : DbContext
+    public class TarefaContext : DbContext
     {
-        public TaferaContext(DbContextOptions<TaferaContext> options) : base(options)
+        public TarefaContext(DbContextOptions<TarefaContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Tafera> Taferas { get; set; }
+        public DbSet<Tarefa> Tarefas { get; set; }
      
     }
 }

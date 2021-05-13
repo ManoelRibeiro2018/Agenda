@@ -15,9 +15,9 @@ namespace CrudDapper.Controllers
     [Route("api/taferas")]
     public class TaferaController: ControllerBase
     {
-        private readonly TaferaContext _taferaContext;
+        private readonly TarefaContext _taferaContext;
         private readonly string _connectionString;
-        public TaferaController(TaferaContext taferaContext, IConfiguration configuration)
+        public TaferaController(TarefaContext taferaContext, IConfiguration configuration)
         {
             _taferaContext = taferaContext;
             // Se tentar pegar a conexão pelo dbContext e utilizar o banco em memória. Vai dar erro!
@@ -31,9 +31,9 @@ namespace CrudDapper.Controllers
           
             using(var sqlConnection = new SqlConnection(_connectionString))
             {
-                var query = "select * from Taferas";
+                var query = "select * from Tarefas";
 
-                var tarefas = sqlConnection.Query<Tafera>(query);
+                var tarefas = sqlConnection.Query<Tarefa>(query);
 
                 return Ok(tarefas);
             }
@@ -44,43 +44,33 @@ namespace CrudDapper.Controllers
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                var query = "Select * from Taferas where id = @id";
-                var tafera = sqlConnection.Query<Tafera>(query, new {id});
+                var query = "Select * from Tarefas where id = @id";
+                var tafera = sqlConnection.Query<Tarefa>(query, new {id});
                 return Ok(tafera);
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Tafera model)
+        public IActionResult Post([FromBody] Tarefa model)
         {
             
             using(var sqlConnection = new SqlConnection(_connectionString))
             {
-                var query = "insert into Taferas(titulo, descricao, dataPrazo) values(@titulo, @descricao, @dataPrazo)";
+                var query = "insert into Tarefas(titulo, descricao, dataPrazo) values(@titulo, @descricao, @dataPrazo)";
                 sqlConnection.Execute(query, new { titulo = model.Titulo,descricao = model.Descricao, dataPrazo = model.DataPrazo });
             }
 
-            return CreatedAtAction(
-                nameof(GetById),
-                new { id = model.Id },
-                model
-                );
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Tafera model)
+        public IActionResult Put(int id, [FromBody] Tarefa model)
         {
-            var tafera = GetById(id);
-
-            if (tafera == null)
-            {
-                return NotFound();
-            }
-
+            
             using(var sqlconnection = new SqlConnection(_connectionString))
             {
-                var query = "update set Tarefas titulo = @titulo, descricao = @descricao, dataPrazo = @dataPrazo where id = @id";
-                sqlconnection.Execute(query, new {titulo = model.Titulo, descricao = model.Descricao, dataPrazo = model.DataPrazo, id = model.Id});
+                var query = "update Tarefas set titulo = @titulo, descricao = @descricao, dataPrazo = @dataPrazo where id = @id";
+                sqlconnection.Execute(query, new {titulo = model.Titulo, descricao = model.Descricao, dataPrazo = model.DataPrazo, id });
             }
 
             return NoContent();
@@ -90,12 +80,7 @@ namespace CrudDapper.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var tarefa = GetById(id);
-            if (tarefa == null)
-            {
-                return NotFound();
-            }
-
+          
             using(var sqlConnection = new SqlConnection(_connectionString))
             {
                 var query = "delete from tarefas where id = @id";
